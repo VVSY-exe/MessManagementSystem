@@ -174,5 +174,107 @@ app.post('/feedback', async(req,res)=>{
             }})
 })
 
+app.get('/staffsignup', async(req,res)=>{
+    res.render(__dirname+'/public/views/signup/staffsignup.ejs');
+})
+
+app.post('/staffsignup', async(req,res)=>{
+    var user = {
+        name: req.body.name,
+        mobile:req.body.contact,
+        email:req.body.email,
+        password:req.body.password,
+        doj: new Date() }
+        
+        connection.query('INSERT INTO STAFF SET ?',user,function(error, results) {
+            if (!error) {
+                res.redirect('/stafflogin')
+            }
+            else {
+                console.log(error);
+                res.send("Nahi hua")
+            }})
+})
+
+app.get('/stafflogin',async(req,res)=>{
+    res.render(__dirname+'/public/views/login/stafflogin.ejs');
+})
+
+app.post('/stafflogin',async(req,res)=>{
+    var email = req.body.email;
+    var password = req.body.password;
+    if (email && password) {
+        connection.query('SELECT * FROM STAFF WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
+            if (results.length > 0) {
+                results=JSON.parse(JSON.stringify(results))
+                console.log(results)
+                req.session.loggedin = true;
+                req.session.email = email;
+                req.session.user_id=results[0].id;
+                res.redirect('/staffdashboard')
+            }
+            else {
+                res.send("Incorrect Credentials")
+            }
+            res.end()
+        });
+    }
+    else {
+        res.send("Incorrect Credentials")
+    }
+})
+
+app.get('/staffdashboard',async(req,res)=>{
+    res.render(__dirname+'/public/views/dashboard/staffdashboard.ejs');
+})
+
+app.get('/createroles', async(req,res)=>{
+    res.render(__dirname+'/public/views/roles/roles.ejs');
+})
+
+app.post('/createroles', async(req,res)=>{
+    var roles={
+        role: req.body.rolename,
+        salary: req.body.salary
+    }
+    connection.query("INSERT INTO ROLES SET ?",[roles],(error,results)=>{
+        if(!error){
+            res.send('Role Created Successfully');
+        }
+        else{
+            console.log(error)
+            res.send('Nahi hua');
+        }
+    })
+})
+
+app.get('/assignroles',async(req,res)=>{
+    var staff,roles
+    connection.query('SELECT * FROM STAFF',(err,results)=>{
+        if(!err){
+            staff=JSON.parse(JSON.stringify(results))
+        }
+        else{
+            console.log(err)
+            res.send('An error occured');
+        }
+    })
+
+    connection.query('SELECT * FROM ROLES',(err,results)=>{
+        if(!err){
+            roles=JSON.parse(JSON.stringify(results))
+        }
+        else{
+            console.log(err)
+            res.send('An error occured');
+        }
+    })
+
+    res.render(__dirname+'/public/views/roles/assignroles.ejs',{staff,roles});
+})
+
+app.post('/assignroles', async(req,res)=>{
+
+})
 
 app.listen(3000, console.log("Listening to Port 3000"))
