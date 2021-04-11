@@ -11,6 +11,9 @@
     <p>Complaint Title: <%=ele.title%></p>
     <p>Complaint Description: <%=ele.description%></p>
     <p>Compaint Date: <%=ele.complaintdate%></p>
+    <%if(ele.imageurl!=null){%> 
+    <img src="<%=ele.imageurl%>">
+    <%}%>
     <br><br>
 <%})%>
 </body>

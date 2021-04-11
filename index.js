@@ -4,6 +4,12 @@ var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var fileupload = require('express-fileupload');
+var cloudinary = require('cloudinary').v2
+cloudinary.config({
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.api_key,
+    api_secret: process.env.api_secret
+  });
 var connection = mysql.createConnection({
 	host     : '127.0.0.1',
 	user     : 'root',
@@ -17,7 +23,8 @@ app.use(fileupload());
 app.use(session({
     secret: process.env.sessionsecret,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    expires: new Date(Date.now() + (30 * 86400 * 1000))
 }))
 
 app.use(express.static('public'));
@@ -102,19 +109,22 @@ app.get('/createcomplaint', async(req,res)=>{
 
 app.post('/createcomplaint', async (req,res)=>{
   
-    // var image
-    // if (!req.files){
-    //     image = null
-    // }
-    // else {
-    //     image = req.files.image.data.toString('base64')
-    // }
+    var image
+    if (!req.files){
+        image = null
+    }
+    else {
+        let response = await cloudinary.uploader.upload("data:image/png;base64,"+req.files.image.data.toString('base64'))
+        console.log(response.url)
+        image = response.url
+    }
     console.log(req.session.email)
     var complaint = {
         id:req.session.user_id,
         title: req.body.title,
         description:req.body.description,
-        complaintdate: new Date(), 
+        complaintdate: new Date(),
+        imageurl: image
     }
         
         connection.query('INSERT INTO COMPLAINT SET ?',complaint,function(error, results) {
@@ -130,33 +140,29 @@ app.post('/createcomplaint', async (req,res)=>{
 })
 
 app.get('/viewcomplaint', async(req,res)=>{
-    connection.query('SELECT * FROM COMPLAINT WHERE id=?',req.session.user_id,function(error,results){
+    connection.query(`SELECT * FROM COMPLAINT WHERE id = '${req.session.user_id}'`,function(error,results){
         if(!error){
             results=JSON.parse(JSON.stringify(results))
-                res.render(__dirname+'/public/views/complaint/viewComplaint.ejs',{results})
+            console.log(results)
+            res.render(__dirname+'/public/views/complaint/viewComplaint.ejs',{results})
+        }
+        else {
+            console.log(error)
         }
     })
 })
 
 
 app.get('/feedback', async(req,res)=>{
-  
                 res.render(__dirname+'/public/views/feedback/createFeedback.ejs')
-        
-
 })
 
-
 app.post('/feedback', async(req,res)=>{
-  
-   
     var feedback = {
-     
         star:req.body.rating1,
         description:req.body.description,
         dateoffeedback: new Date(), 
     }
-        
         connection.query('INSERT INTO feedback SET ?',feedback,function(error, results) {
             if (!error) {
                 console.log('Feedback Created')
@@ -166,12 +172,7 @@ app.post('/feedback', async(req,res)=>{
                 console.log(error);
                 res.send("Nahi hua")
             }})
-
 })
-
-
-
-
 
 
 app.listen(3000, console.log("Listening to Port 3000"))
