@@ -7,7 +7,7 @@ var fileupload = require('express-fileupload');
 var connection = mysql.createConnection({
 	host     : '127.0.0.1',
 	user     : 'root',
-	password : process.env.dbpassword,
+    password : process.env.dbpassword,
 	database : 'messmanagementsystem'
 });
 
@@ -101,13 +101,14 @@ app.get('/createcomplaint', async(req,res)=>{
 })
 
 app.post('/createcomplaint', async (req,res)=>{
-    var image
-    if (!req.files){
-        image = null
-    }
-    else {
-        image = req.files.image.data.toString('base64')
-    }
+  
+    // var image
+    // if (!req.files){
+    //     image = null
+    // }
+    // else {
+    //     image = req.files.image.data.toString('base64')
+    // }
     console.log(req.session.email)
     var complaint = {
         id:req.session.user_id,
@@ -136,5 +137,41 @@ app.get('/viewcomplaint', async(req,res)=>{
         }
     })
 })
+
+
+app.get('/feedback', async(req,res)=>{
+  
+                res.render(__dirname+'/public/views/feedback/createFeedback.ejs')
+        
+
+})
+
+
+app.post('/feedback', async(req,res)=>{
+  
+   
+    var feedback = {
+     
+        star:req.body.rating1,
+        description:req.body.description,
+        dateoffeedback: new Date(), 
+    }
+        
+        connection.query('INSERT INTO feedback SET ?',feedback,function(error, results) {
+            if (!error) {
+                console.log('Feedback Created')
+                res.redirect('/')
+            }
+            else {
+                console.log(error);
+                res.send("Nahi hua")
+            }})
+
+})
+
+
+
+
+
 
 app.listen(3000, console.log("Listening to Port 3000"))
