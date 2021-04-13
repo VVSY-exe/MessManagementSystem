@@ -161,7 +161,7 @@ app.post('/feedback', async(req,res)=>{
     var feedback = {
         star:req.body.rating1,
         description:req.body.description,
-        dateoffeedback: new Date(), 
+        dateoffeedback: new Date(),
     }
         connection.query('INSERT INTO feedback SET ?',feedback,function(error, results) {
             if (!error) {
@@ -224,6 +224,8 @@ app.post('/stafflogin',async(req,res)=>{
     }
 })
 
+
+
 app.get('/staffdashboard',async(req,res)=>{
     res.render(__dirname+'/public/views/dashboard/staffdashboard.ejs');
 })
@@ -235,7 +237,7 @@ app.get('/createroles', async(req,res)=>{
 app.post('/createroles', async(req,res)=>{
     var roles={
         role: req.body.rolename,
-        salary: req.body.salary
+        salary: req.body.salary,
     }
     connection.query("INSERT INTO ROLES SET ?",[roles],(error,results)=>{
         if(!error){
@@ -275,6 +277,30 @@ app.get('/assignroles',async(req,res)=>{
 
 app.post('/assignroles', async(req,res)=>{
 
+})
+
+var items=["sugar","hello","eat"]
+
+app.get('/createorder',async(req,res)=>{
+
+    res.render(__dirname+'/public/views/order/createOrder.ejs',{items});
+})
+
+
+app.post('/createorder',async(req,res)=>{
+   
+   
+   items.push(req.body.itemname);
+   console.log(req.body.itemname);
+   res.redirect('/createorder')
+})
+
+app.post('/orderdone',async(req,res)=>{
+   
+    
+   items=["sugar","hello","eat"];
+  
+   res.redirect('/createorder')
 })
 
 app.listen(3000, console.log("Listening to Port 3000"))
