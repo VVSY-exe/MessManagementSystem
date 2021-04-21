@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Lista-Productos-Canito.css">
+    <!-- <link rel="stylesheet" href="/public/views/order/assets/css/Lista-Productos-Canito.css"> -->
+</head>
+
+<body id="page-top">
+    <%-include('../../partials/header.ejs')%> 
+<div>
+        <% for( var i=0;i<allorder.length;i++) { %>  
+            <br> <br> 
+        <H3> 
+            ORDER NO 
+            <%=i+1%> 
+         </H3> 
+        <br> 
+
+  
+        <div class="row" style="margin: -11px;margin-right: -21px;margin-top: -3px;"> 
+            <div class="col-md-12"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Items</th>
+                <th>Quantity</th>
+                <th>Price per unit</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(var j=0;j<allorder[i].length;j++) { %>
+                <tr>
+                    <td>
+                        <%=j+1 %> 
+                    </td>
+                    <td>
+                        <%=allorder[i][j]['itemname'] %> 
+                    </td>
+                    <td>
+                        <%=allorder[i][j]['quantity'] %> 
+                    
+                    </td>
+                    <td>
+                        <%=allorder[i][j]['price'] %> 
+                       
+                </tr>
+                <% } %>
+                
+        </tbody>
+    </table>
+</div>
+        </div>
+   
+    <% } %>
+</div>
+
+  <%-include('../../partials/footer.ejs')%> 
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/freelancer.js"></script>
+</body>
+
+</html>
