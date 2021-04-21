@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Lista-Productos-Canito.css">
+    <!-- <link rel="stylesheet" href="/public/views/order/assets/css/Lista-Productos-Canito.css"> -->
+</head>
+
+<body id="page-top">
+    
+ <%-include('../../partials/header.ejs')%>  
+
+
+ <div class="text-center">
+    <div class="class="text-center" style="width: 1150px;height: 489.4px;margin: 10px;margin-top: 129px;padding-left:250px;">
+        <div class="row" style="height: 85px;">
+            <div class="col-md-4" style="height: 80px;width: 367.987px;">
+                <h2 style="width: 343px;">List of Products</h2>
+            </div>
+            <div class="col">
+                <form action="createorder" method="POST">
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="col"><input name="itemname" class="form-control" type="text" placeholder="Enter item"></div>
+                            <div class="col"><input name="quantity" class="form-control" type="text" placeholder="Enter quantity"></div>
+                            <div class="col">
+                                <div></div><input name="price" class="form-control" type="number" placeholder="Enter price">
+                            </div>
+                        </div>
+                        <div style="text-align: center;"><button class="btn btn-primary" type="submit" style="text-align: right;padding: 5px 12px;margin: 4px;">Add Items</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="margin: -11px;margin-right: -21px;margin-top: -3px;">
+            <div class="col-md-12"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Items</th>
+                <th>Quantity</th>
+                <th>Price per unit</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(var i=0;i<items.length;i++) { %>
+                <tr>
+                    <td>
+                        <%=i+1 %> 
+                    </td>
+                    <td>
+                        <%=items[i]['itemname'] %> 
+                    </td>
+                    <td>
+                        <%=items[i]['quantity'] %> 
+                    
+                    </td>
+                    <td>
+                        <%=items[i]['price'] %> 
+                        <td> <button type="button" class="btn btn-danger" value="todo"><i class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></button>
+                        </td>
+                </tr>
+                <% } %>
+
+        </tbody>
+    </table></div>
+        </div>
+    </div></div>
+
+    <form action="orderdone" method="POST">
+    <div class="text-center" style="padding: 167px;height: 359px;"><button class="btn btn-primary" type="submit" style="margin: 21px;margin-right: 21px;margin-bottom: 33px;">Submit Order</button></div>
+</form>
+
+<%-include('../../partials/footer.ejs')%> 
+
+
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/freelancer.js"></script>
+</body>
+
+</html>

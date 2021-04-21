@@ -26,6 +26,7 @@
     "express-fileupload": "^1.2.1",
     "express-session": "^1.17.1",
     "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
     "socket.io": "^4.0.1"
   }
 }
