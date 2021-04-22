@@ -471,5 +471,41 @@ var star =Math.round(avg);
 
 })
 
+app.post("/resolvecomplaint", async (req, res) => {
+
+  const pool=await dbFunction.connectToDb();
+
+var id=req.body['complaint_id'];
+
+console.log(req.body['complaint_id']);
+
+
+ var results = await pool.query(`update messmanagementsystem.complaint set issolved='YES' where complaintid=${id}`)
+
+
+//update the isresolved value
+
+await dbFunction.disconnectFromDb(pool)
+
+res.redirect('/allcomplaints')
+
+
+})
+
+
+app.get("/oldcomplaints", async (req, res) =>{
+
+  connection.query("SELECT * From  messmanagementsystem.complaint  Where issolved='YES' ORDER BY complaintdate Asc", (error, results) =>{
+
+    results= JSON.parse(JSON.stringify(results))
+    console.log(results[0])  
+
+    res.render(__dirname + "/public/views/complaint/oldComplaints.ejs",{results});
+ 
+    })
+
+
+})
+
 
 app.listen(3000, console.log("Listening to Port 3000"));

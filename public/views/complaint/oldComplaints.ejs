@@ -22,16 +22,17 @@
         
             <br> <br> 
         <H3> 
-            ALL Complaints
+            Older Complaints
 
         
          </H3>
          
         <br> 
-         <form action="/oldcomplaints" method="GET">  
-            <button  type="submit"  class="btn" style="background-color: #18bc9c ; color: white;"value="todo">Older Complaints</button>
-        </form>
-        <br> 
+        <form action="/allcomplaints" method="GET">  
+            <button  type="submit"  class="btn" style="background-color: #18bc9c ; color: white;"value="todo">Unresolved Complaints</button>
+           </form>
+           <br> 
+       
          
         <div class="row" style="margin: -11px;margin-right: -21px;margin-top: -3px;"> 
             <div class="col-md-12"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -41,8 +42,6 @@
                 <th>Student ID/Name</th>
                 <th>Title</th>
                 <th>Image Link</th>
-                <th>Action</th>
-
             </tr>
         </thead>
         <tbody>
@@ -69,11 +68,12 @@
                       N.A
                        
                         <% } else { %>
-                        <a href="<%=results[j]['image']%>">view image</a>
+                        <a href="
+                        <%=results[j]['image'] %> 
+                        ">view image</a>
                         </td>
                     <% } %> 
-                        <td> <button id="<%=results[j]['complaintid']%>" type="button" class="btn btn-primary" value="todo">Resolved</button>
-                        </td>
+                        
                 </tr>
                 <% } %>
                 
