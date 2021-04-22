@@ -6,6 +6,12 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 var fileupload = require("express-fileupload");
 var cloudinary = require("cloudinary").v2;
+const dbFunction=require('./database.js')
+
+
+const { json } = require("body-parser");
+const { render } = require("ejs");
+const { totalmem } = require("os");
 cloudinary.config({
   cloud_name: process.env.cloud_name,
   api_key: process.env.api_key,
@@ -137,7 +143,7 @@ app.post("/createcomplaint", async (req, res) => {
     title: req.body.title,
     description: req.body.description,
     complaintdate: new Date(),
-    imageurl: image,
+    image: image,
   };
 
   connection.query(
@@ -395,7 +401,7 @@ app.get("/vieworder", async (req, res) => {
       i++;
       while (i < results.length && results[i]['orderid'] == results[i - 1]['orderid']) {
         sameorderid.push(results[i]);
-        console.log('x')
+        // console.log('x')
         i++;
       }
       allorder.push(sameorderid);
@@ -418,6 +424,52 @@ app.get("/vieworder", async (req, res) => {
 
 
 )
+
+
+
+app.get("/allcomplaints", async (req, res) => {
+
+  connection.query("SELECT * From  messmanagementsystem.complaint  Where issolved='NO' ORDER BY complaintdate Asc", (error, results) =>{
+
+                results= JSON.parse(JSON.stringify(results))
+                console.log(results[0])  
+        
+               
+                res.render(__dirname + "/public/views/complaint/allComplaints.ejs", {results} );
+                })
+
+
+                
+              })
+
+
+
+app.get("/viewfeedback", async (req, res) => {
+  
+  const pool=await dbFunction.connectToDb();
+  var [[count1]]=await pool.execute('SELECT count(star) as count FROM messmanagementsystem.feedback')
+var [[avg1]]=await pool.query('SELECT avg(star) as avg FROM messmanagementsystem.feedback')
+var counteach=[];
+var countforeach=[];
+var count=count1['count'];
+var avg=avg1['avg'];
+console.log(count1['count'])
+console.log(avg1['avg'])
+for(var i=1;i<=5;i++)
+{
+
+ var [[val]]= await pool.query(`SELECT count(star) as val FROM messmanagementsystem.feedback where star=${i}`)
+ countforeach.push(val['val'])
+ 
+ console.log(Math.round((val['val']/count)*100));
+ counteach.push(Math.round((val['val']/count)*100));
+
+}
+await dbFunction.disconnectFromDb(pool)
+var star =Math.round(avg);
+  res.render(__dirname + "/public/views/feedback/viewFeedback.ejs",{count,avg,counteach,star,countforeach});
+
+})
 
 
 app.listen(3000, console.log("Listening to Port 3000"));
