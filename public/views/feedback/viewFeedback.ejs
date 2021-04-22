@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="views/feedback/assets/css/styles.css">
+    <link rel="stylesheet" href="views/feedback/assets/css/User-rating.css">
+   
+   
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Lista-Productos-Canito.css">
+  
+
+
+</head>
+
+<body>
+    <%-include('../../partials/header.ejs')%> 
+    <div>
+        <div class="user-body">
+
+
+        <span class="heading">User Rating  </span>
+        
+        
+<% for( let index = 0; index < star; index++ ) { %>
+
+    <span class="fa fa-star checked"> </span>
+
+<% } %>
+
+<% for( let index = 0; index < 5-star; index++ ) { %>
+
+    <span class="fa fa-star "> </span>
+
+<% } %>
+
+    
+
+            <p>
+                <%=avg%>
+                  average based on
+                  <%=count%>
+                   reviews. 
+                
+            </p>
+
+            <!-- .bar-5 {
+               
+              }
+              
+              .bar-4 {
+                width: 30%;
+                height: 18px;
+                background-color: #2196F3;
+              }
+              
+              .bar-3 {
+                width: 10%;
+                height: 18px;
+                background-color: #00bcd4;
+              }
+              
+              .bar-2 {
+                width: 4%;
+                height: 18px;
+                background-color: #ff9800;
+              }
+              
+              .bar-1 {
+                width: 15%;
+                height: 18px;
+                background-color: #f44336;
+              } -->
+
+            <hr style="border: 3px solid #f1f1f1 ;">
+            <div class="pb-row">
+                <div class="side">
+                    <div><span>5 star</span></div>
+                </div>
+
+                <div class="middle">
+                    <div class="bar-container" >
+                        <div
+
+                        style="<%= `width: ${counteach[4]}%; height: 18px;background-color:#4CAF50 ;` %>"
+                        ></div>
+                    </div>
+                </div>
+                  
+                <div class="side right">
+                    <div><span>
+                    <%=countforeach[4]%>    
+                    </span></div>
+                </div>
+                <div class="side">
+                    <div><span>4 star</span></div>
+                </div>
+
+                <div class="middle">
+                    <div class="bar-container" >
+                        <div
+
+                        style="<%= `width: ${counteach[3]}%; height: 18px;background-color: #2196F3;` %>"
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="side right">
+                    <div><span>
+                        <%=countforeach[3]%>
+                    </span></div>
+                </div>
+
+
+
+                <div class="side">
+                    <div><span>3 star</span></div>
+                </div>
+
+                <div class="middle">
+                    <div class="bar-container" >
+                        <div
+
+                        style="<%= `width: ${counteach[2]}%; height: 18px;background-color: #00bcd4;` %>"
+                        ></div>
+                    </div>
+                </div>
+                  
+
+                <div class="side right">
+                    <div><span>
+                        <%=countforeach[2]%>
+                    </span></div>
+                </div>
+
+
+                <div class="side">
+                    <div><span>2 star</span></div>
+                </div>
+
+
+                <div class="middle">
+                    <div class="bar-container" >
+                        <div
+
+                        style="<%= `width: ${counteach[1]}%; height: 18px;background-color: #ff9800;` %>"
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="side right">
+                    <div><span>
+                        <%=countforeach[1]%>
+                    </span></div>
+                </div>
+                <div class="side">
+                    <div><span>1 star</span></div>
+                </div>
+
+
+
+                <div class="middle">
+                    <div class="bar-container" >
+                        <div
+
+                        style="<%= `width: ${counteach[0]}%; height: 18px;background-color: #f44336;` %>"
+                        ></div>
+                    </div>
+                </div>
+                  
+
+
+             
+
+
+                <div class="side right">
+                    <div><span>
+                        <%=countforeach[0]%>
+                    </span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-include('../../partials/footer.ejs')%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/freelancer.js"></script>
+</body>
+
+</html>
