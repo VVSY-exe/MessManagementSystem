@@ -7,32 +7,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Lista-Productos-Canito.css">
+  
+    <style>
+        *{
+      margin: 0;
+      padding: 0;
+  }
+  .rate {
+      float: left;
+      height: 46px;
+      padding: 0 10px;
+  }
+  .rate:not(:checked) > input {
+      position:absolute;
+      top:-9999px;
+  }
+  .rate:not(:checked) > label {
+      float:right;
+      width:1em;
+      overflow:hidden;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:30px;
+      color:#ccc;
+  }
+  .rate:not(:checked) > label:before {
+      content: '★ ';
+  }
+  .rate > input:checked ~ label {
+      color: #ffc700;    
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+      color: #deb217;  
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+      color: #c59b08;
+  }
+    </style>
+
 </head>
 
 <body>
 
     <%-include('../../partials/header.ejs')%>  
+    <div style="align-items: center;align-content: center;margin-top: 5%;margin-left: 25%;">
+    <H3> 
+        Review Us 
 
+    
+     </H3>
+   
     <form method="post" action="feedback">
         <label>1. Your overall experience with us ?</label><br><br>
 
-        <span class="star-rating">
-            <input type="radio" name="rating1" value="1"><i></i>
-            <input type="radio" name="rating1" value="2"><i></i>
-            <input type="radio" name="rating1" value="3"><i></i>
-            <input type="radio" name="rating1" value="4"><i></i>
-            <input type="radio" name="rating1" value="5"><i></i>
+        <span class="rate">
+
+    <input type="radio" id="star5" name="rating1" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rating1" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rating1" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rating1" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rating1" value="1" />
+    <label for="star1" title="text">1 star</label>
+
         </span>
         <br><br><br>
-        <label>2.Any Comments ?</label><br><br>
+        <label>2. Any Comments ? </label><br><br>
         <textarea cols="75" name="description" rows="5"></textarea>
         <br> <br>
-        <input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit" value="Submit your review">
+      
+        <button  type="submit"  class="btn" style="background-color: #18bc9c ; color: white;"value="todo">Submit Reviews</button>
+    </div>
 
 
     </form>
     <%-include('../../partials/footer.ejs')%> 
+    <script src="/views/complaint/complaintactions.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/freelancer.js"></script>
 </body>
 
 </html>
