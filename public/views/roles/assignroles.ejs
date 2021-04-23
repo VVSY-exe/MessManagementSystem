@@ -5,8 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/views/roles/assignroles.css">
 </head>
 <body>
-    
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <ul id="myUL">
+        <%staff.forEach(ele=>{%>
+            <div class="<%=ele.staffid%>"><li id="<%=ele.staffid%>"><a href="#"><%=ele.name%></a></li>
+            <script>document.getElementById('<%=ele.staffid%>').onclick=function(){
+            
+            }</script></div>
+            <%})%>
+    </ul>
+    <script>
+        function myFunction() {
+          // Declare variables
+          var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById('myInput');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myUL");
+          li = ul.getElementsByTagName('li');
+        
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+        </script>
+
 </body>
 </html>

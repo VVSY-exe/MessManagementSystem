@@ -290,30 +290,19 @@ app.post("/createroles", async (req, res) => {
 });
 
 app.get("/assignroles", async (req, res) => {
-  var staff, roles;
-  connection.query("SELECT * FROM STAFF", (err, results) => {
-    if (!err) {
-      staff = JSON.parse(JSON.stringify(results));
-    } else {
-      console.log(err);
-      res.send("An error occured");
-    }
-  });
-
-  connection.query("SELECT * FROM ROLES", (err, results) => {
-    if (!err) {
-      roles = JSON.parse(JSON.stringify(results));
-    } else {
-      console.log(err);
-      res.send("An error occured");
-    }
-  });
-
-  res.render(__dirname + "/public/views/roles/assignroles.ejs", {
-    staff,
-    roles,
+  let staff, roles;
+  connection.query("SELECT * FROM messmanagementsystem.staff", (err,rows)=> {
+    staff=JSON.parse(JSON.stringify(rows))
+      connection.query("Select * from messmanagementsystem.roles",(err,rows)=>{
+        roles=JSON.parse(JSON.stringify(rows))
+        res.render(__dirname + "/public/views/roles/assignroles.ejs", {
+          staff,
+          roles
+        });
+      })
   });
 });
+  
 
 app.post("/assignroles", async (req, res) => { });
 
