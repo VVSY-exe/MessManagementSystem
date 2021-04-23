@@ -293,7 +293,10 @@ app.get("/assignroles", async (req, res) => {
   var staff, roles;
   connection.query("SELECT * FROM STAFF", (err, results) => {
     if (!err) {
+
       staff = JSON.parse(JSON.stringify(results));
+      console.log(staff);
+
     } else {
       console.log(err);
       res.send("An error occured");
