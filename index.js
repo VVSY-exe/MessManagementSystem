@@ -74,7 +74,7 @@ app.post("/signup", async (req, res) => {
         res.redirect("/login");
       } else {
         console.log(error);
-        res.send("Nahi hua");
+        res.send("ERROR AKA Nahi hua");
       }
     }
   );
@@ -106,6 +106,7 @@ app.post("/login", async (req, res) => {
           req.session.loggedin = true;
           req.session.email = email;
           req.session.user_id = results[0].id;
+          req.session.isstaff='NO';
           res.redirect("/");
         } else {
           res.send("Incorrect Credentials");
@@ -254,6 +255,7 @@ app.post("/stafflogin", async (req, res) => {
           req.session.loggedin = true;
           req.session.email = email;
           req.session.user_id = results[0].id;
+          req.session.isstaff='YES';
           res.redirect("/staffdashboard");
         } else {
           res.send("Incorrect Credentials");
@@ -267,6 +269,7 @@ app.post("/stafflogin", async (req, res) => {
 });
 
 app.get("/staffdashboard", async (req, res) => {
+
   res.render(__dirname + "/public/views/dashboard/staffdashboard.ejs");
 });
 
@@ -338,7 +341,7 @@ var items = [];
 
 app.get("/createorder", async (req, res) => {
 
-  if (req.session.loggedin) {
+  if (req.session.loggedin&& req.session.isstaff=='YES') {
     res.render(__dirname + "/public/views/order/createOrder.ejs", { items });
   } else {
     res.send("Please login to view");
