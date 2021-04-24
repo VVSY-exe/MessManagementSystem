@@ -18,14 +18,30 @@
 <body>
 
     <%-include('../../partials/header.ejs')%> 
-    <form action="createcomplaint" method="POST" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder="Complaint Title" required><br><br>
-        <input type="text" name="description" placeholder="Complaint Description" required><br><br>
-        <input type="file" name="image"><br><br>
-        <input type="submit" value="post"><br><br>
-    </form>
+    
     </form>
 
+
+
+    <div style="align-items: center;align-content: center;margin-top: 5%;margin-left: 25%;">
+        <H3> 
+           Post Compaint
+        
+         </H3>
+         <br>
+         
+         <form action="createcomplaint" method="POST" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Complaint Title" required><br><br>
+            <input type="text" name="description" placeholder="Complaint Description" required><br><br>
+            <input type="file" name="image"><br><br>
+            <br>
+            <input type="submit"  class="btn" style=" margin-left: 0%; background-color: #18bc9c ; color: white;" value="Post Complaint"><br><br>
+
+        </form>
+          
+          
+        </div>
+    
     <%-include('../../partials/footer.ejs')%> 
     <script src="/views/complaint/complaintactions.js" ></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

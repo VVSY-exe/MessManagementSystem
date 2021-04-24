@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="views/dashboard/assets/css/Animated-Typing-With-Blinking.css">
+    
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Lista-Productos-Canito.css">
+
+
+    
+    <link rel="stylesheet" href="views/dashboard/assets/css/styles.css">
+</head>
+
+<body>
+
+    <%-include('../../partials/header.ejs')%>  
+  
+
+
+<div class="vision">
+    <div class="vision-one" style="align-items: center;">
+      <img class="img-responsive center-block" src="views/dashboard/assets/placeholder.jpg" style="object-fit:cover;
+      width:1550px;
+      height:500px;
+      border: solid 1px #CCC">
+      <div class="caption">
+
+        
+        <p class="text-on-img text-center">We're building a more healthy place on earth.</p>
+      </div>   
+    </div>
+
+    <BR></BR>
+    <div class="text-nowrap d-flex justify-content-center align-items-center animated-text noSelect" style="background: rgba(255,255,255,0);border-style: none;margin-top: 16px;width: 50%;margin-right: auto;margin-left: auto;"><div class="caption v-middle text-center">
+    <h1 class="cd-headline clip">
+        <span class="blc">We are here to</span>
+        <span class="cd-words-wrapper">
+          <b class="is-visible">HELP.</b>
+          <b>CARE.</b>
+          <b>FEED.</b>
+        </span>
+        <span class="blinking">|</span>
+    </h1>
+    <br>
+ 
+</div></div>
+
+<div style="margin-left: 40%;margin-top: 50px;"> <a href="/feedback"><button type="submit"  class="btn" style="background-color: #18bc9c ; color: white;">Rate Us !</button></a>
+
+    
+    <a href="/createcomplaint"><button type="submit"  class="btn" style="background-color: #18bc9c ; color: white;">Complaint Here </button></a>
+   
+    </div>
+   
+<div style="align-items: center;align-content: center;margin-top: 5%;margin-left: 15%;margin-right: 15%;">
+    <br>
+
+    
+<h2 style="margin-left: 50;">TODAYS'S MENU </h2>
+<br>
+    <h3 >
+        Breakfast 
+    </h3>
+   <br>
+    <div class="col-md-12"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Item 1 </th>
+                <th>Item 2</th>
+                <th>Item 3</th>
+                <th>Item 4</th>
+                <th>Item 5</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr >
+                    <td>
+                        <%=result[0]['Session']%> 
+                    
+                    </td>
+    
+                    <td>
+                           <%=result[0]['Content 1']%> 
+                    </td>
+                    <td>
+                        <%=result[0]['Content 2']%> 
+                    </td>
+                    
+                    <td> 
+                        <%=result[0]['Content 3']%> 
+                    </td>
+    
+                    <td>
+                        <%=result[0]['Content 4']%> 
+                    </td>
+    
+                    <td>
+                        <%=result[0]['Content 5']%> 
+                     </td>
+                </tr>
+              
+                
+        </tbody>
+    </table>
+</div>
+     
+
+
+
+<br>
+<h3 >
+    Lunch
+</h3>
+<br>
+<div class="col-md-12"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Item 1 </th>
+            <th>Item 2</th>
+            <th>Item 3</th>
+            <th>Item 4</th>
+            <th>Item 5</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr >
+                <td>
+                    <%=result[1]['Session']%> 
+                
+                </td>
+
+                <td>
+                       <%=result[1]['Content 1']%> 
+                </td>
+                <td>
+                    <%=result[1]['Content 2']%> 
+                </td>
+                
+                <td> 
+                    <%=result[1]['Content 3']%> 
+                </td>
+
+                <td>
+                    <%=result[1]['Content 4']%> 
+                </td>
+
+                <td>
+                    <%=result[1]['Content 5']%> 
+                 </td>
+              
+            </tr>
+          
+            
+    </tbody>
+</table>
+</div>
+
+<br>
+
+<h3 >
+    Dinner
+</h3>
+<br>
+
+<div class="col-md-12"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Item 1 </th>
+            <th>Item 2</th>
+            <th>Item 3</th>
+            <th>Item 4</th>
+            <th>Item 5</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        
+            <tr >
+                <td>
+                    <%=result[2]['Session']%> 
+                
+                </td>
+
+                <td>
+                       <%=result[2]['Content 1']%> 
+                </td>
+                <td>
+                    <%=result[2]['Content 2']%> 
+                </td>
+                
+                <td> 
+                    <%=result[2]['Content 3']%> 
+                </td>
+
+                <td>
+                    <%=result[2]['Content 4']%> 
+                </td>
+
+                <td>
+                    <%=result[2]['Content 5']%> 
+                 </td>
+              
+            </tr>
+          
+            
+    </tbody>
+</table>
+</div>
+
+</div>
+
+
+         <p class="explanation text-center">Since day one, our mission has been to provide quality and natural healthy food  to the world, and to build a better eco-system and society for the earth. This is important - we hope you can join our mission to make the world a more harmonious place.</p>
+        <div class="four-visions container">
+<!-- <div class="text-row container-fluid center-block">
+<p class="statement center-block text-center">When you drink with Borntea, you're building a better environment and society.</p>
+</div> -->
+
+
+
+<div class="row">
+<div class="col-xs-12 col-sm-3">
+  <div class="point"><span class="title">1.<br>Encouraging a simple and healthy life</span><br><br>
+</div>
+</div>
+<div class="col-xs-12 col-sm-3">
+<div class="point"><span class="title">2.<br>Supporting sustainability </span><br><br>
+
+</div>
+</div>
+<div class="col-xs-12 col-sm-3">
+<div class="point"><span class="title">3.<br>Delivering more values along the chain</span><br><br>
+</div>
+</div>
+  <div class="col-xs-12 col-sm-3">
+<div class="point"><span class="title">4.<br>Serving the Students </span><br><br>
+</div>
+</div>
+</div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-include('../../partials/footer.ejs')%> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="/assets/js/freelancer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="views/dashboard/assets/js/Animated-Typing-With-Blinking.js"></script>
+</body>
+
+</html>

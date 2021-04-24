@@ -1,0 +1,430 @@
+
+.vision a {
+    text-decoration: none;
+    
+  }
+  .vision .link_span {
+    padding-bottom: 2px;
+    border-bottom: #263B59 1px solid; 
+  }
+  
+  /*numbers*/
+  
+    .statement {
+    font-size: 40px;
+  
+  }
+  
+    .text-row {
+    margin-top: 2%;
+    margin-bottom: 3%;
+  }
+  
+  
+    .numbers {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  
+    .numbers .numbers-details{
+    color: #263B59;;
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+  
+  }
+    .numbers .numbers-details .title {
+    font-size: 30px;
+  }
+  
+    .numbers .numbers-details .details {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666666;
+  }
+  
+    .border {
+    border: 2px solid #263b59;
+    padding: 10% 10%;
+  }
+  
+  /*end numbers*/
+  
+  
+  /*four-visions*/
+  
+    .four-visions .statement {
+    font-size: 24px;
+    max-width: 700px;
+  
+  }
+  
+    .four-visions{
+    margin-bottom: 5%;
+  }
+  
+    .four-visions .point{
+    color: #263B59;;
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+  
+  }
+    .four-visions .point .title {
+    font-size: 20px;
+      font-weight: 600;
+  }
+  
+  /* end four visions */
+  
+  /* text on img */
+  .vision .vision-one{
+    position: relative;
+  }
+  .vision .vision-one .caption {
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+    position: absolute;
+    top: 50% ;
+    left: 50% ;
+    transform: translate(-50%, -50%);
+  
+  }
+  
+  /* end text on img */
+  
+  .vision .explanation {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 7%;
+    margin-bottom: 7%;
+  }
+  
+  
+  
+  /* specific */
+  
+  .text-on-img-1 {
+    color: #263b59;
+  }
+  
+  /* mid-text-row */
+  .vision .mid-text-row .statement {
+    font-size: 30px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    font-weight: 500;
+    color: #263B59;
+  }
+  
+  
+  /* end mid-text-row */
+  
+  /* wrapper2 */
+  
+  .vision a {
+    text-decoration: none;
+  }
+  
+  .vision .img-packs2 {
+      margin-bottom: 5%;
+  }
+  
+  .vision .wrapper .caption2 {
+    color: #263B59;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .vision .wrapper .caption2 .title {
+    font-size: 22px;
+  }
+  
+  .vision .wrapper .caption2 .details {
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 100%;
+    margin: 0 auto;
+    color: #666666;
+  }
+  
+  
+  .vision .wrapper2 {
+      position: relative;
+      margin-top: 0px;
+  
+  }
+  
+  /*end wrapper2 */
+  
+  .vision .value-for-money {
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+  
+  .fourth-explanation {
+    margin-top: 3% !important;
+  }
+  
+  
+  /* drinking with borntea */
+  
+  hr {
+    width: 55% !important;
+    border-top: 2px solid #111111; 
+    margin: 0 auto !important;
+  
+  }
+  
+  .drinking-borntea {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 22px;
+    margin-top: 5%;
+    
+  }
+  .button-block {
+      margin-bottom: 5%;
+    
+  }
+  
+  /*end drinking with borntea*/
+  
+  
+  /* end specific*/
+  
+  /* start of carousel */
+  
+  .carousel {
+      margin-bottom: 0;
+      padding: 0 40px 30px 40px;
+    margin-top: 10%;
+  }
+  
+  .carousel .col-md-3 {
+    padding: 5px !important;
+    
+  }
+  /* The controls */
+  .carousel-control {
+      left: -12px;
+      height: 40px;
+      width: 40px;
+      background: none repeat scroll 0 0 #263b59;
+      border: 4px solid #FFFFFF;
+      border-radius: 23px 23px 23px 23px;
+      margin-top: 90px;
+  }
+  .carousel-control.right {
+      right: -12px;
+    color: white !important;
+  }
+  .carousel-control.left {
+    color: white !important;
+  }
+  /* The indicators */
+  .carousel-indicators {
+      right: 50%;
+      top: auto;
+      bottom: -10px;
+      margin-right: -19px;
+  }
+  /* The colour of the indicators */
+  .carousel-indicators li {
+      background: #cecece;
+  }
+  .carousel-indicators .active {
+  background: #263b59;
+  }
+  
+  /* end of carousel */
+  
+  
+  /* overwrite shopify*/
+  
+  .rte .text-link:hover, .rte .text-link:focus {
+  
+    border-bottom: 0;
+  }
+  
+  /* end overwrite shopify*/
+  
+  
+  /* Responsive Styles */
+  
+  /* desktop screen sizes */
+  @media (min-width: 992px) {
+  
+  }
+  
+  /* tablets screen sizes */
+  @media (min-width: 767px) and (max-width: 991px) {
+  
+  }
+  
+  /* small screen sizes */
+  @media (max-width: 767px) {
+  
+        .btn-default {
+      padding: 10px 25px;
+      font-size: 90%;
+      line-height: 1;
+      border-radius: 5px;
+    }
+    
+    
+      .statement {
+    font-size: 30px;
+  
+    }
+    
+       .text-row {
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+    
+    /*numbers*/
+  
+    .numbers {
+    margin-top: 8%;
+    margin-bottom: 5%;
+  }
+  
+    .numbers .numbers-details .title {
+    font-size: 20px;
+  }
+  
+    .numbers .numbers-details .details {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+    
+     .numbers .border {
+      margin-bottom: 20px;
+    }
+  
+  /*end numbers*/
+    
+  
+    .four-visions .point{
+  
+    max-width: 90%;
+  
+  }
+    
+   .four-visions .point .title {
+  font-size: 16px;
+  }
+  
+  
+  
+  .four-visions .statement {
+  font-size: 20px;
+  max-width: 70%;
+  margin: 0 auto;
+  
+  }
+    
+  .vision .vision-one .caption {
+    font-size: 24px;
+    width: 80%;
+  margin: 0 auto;
+  
+  }  
+  
+  
+  .vision .explanation {
+  
+  font-size: 16px;
+    max-width: 70%;
+    margin: 0 auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  }
+  
+  /* specific */
+  
+  .vision .value-for-money {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .fourth-explanation {
+    margin-top: 5% !important;
+  }
+  
+  /* mid-text */
+  .vision .mid-text-row .statement{
+  
+  font-size: 18px;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  font-weight: 500;
+  color: #263B59;
+  max-width: 70%;
+  }
+  
+  .vision .mid-text-row .statement.factors {
+  margin-bottom: 8%; 
+  }
+  
+  /* end mid-text */
+  
+  
+  /* wrapper2 */
+   
+  .vision .img-packs2 {
+      margin-bottom: 0px;
+  }
+  
+  .vision .img-packs2 .more-from-borntea{
+      font-size: 20px;
+  }
+  
+  .vision .wrapper .caption2 {
+    color: #263B59;;
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  
+  }
+  .vision .wrapper .caption2 .title {
+    font-size: 16px;
+  }
+  
+  .vision .wrapper .caption2 .details {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+    /*end wrapper2*/ 
+    
+    
+   /* drinking with borntea */
+  
+  hr {
+    width: 55% !important;
+    border-top: 2px solid #111111; 
+    margin: 0 auto !important;
+  
+  }
+  
+  .drinking-borntea {
+    max-width: 70%;
+    margin: 0 auto;
+    font-size: 18px;
+    margin-top: 10%;
+    
+  }
+  .button-block {
+      margin-bottom: 10%;
+    
+  }
+  
+  /*end drinking with borntea*/ 
+    
+  
+    /* end specific */
+    
+  }

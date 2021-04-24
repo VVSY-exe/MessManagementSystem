@@ -10,7 +10,7 @@
 <body>
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
     <ul id="myUL">
-        <%staff.forEach(ele=>{%>
+        <% staff.forEach(ele=>{ %>
             <div class="<%=ele.staffid%>"><li id="<%=ele.staffid%>"><a href="#"><%=ele.name%></a></li>
             <script>document.getElementById('<%=ele.staffid%>').onclick=function(){
             

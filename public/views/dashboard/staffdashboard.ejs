@@ -7,17 +7,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Lista-Productos-Canito.css">
+   
+    <link rel="stylesheet" href="views/dashboard/assets/css/styles.css">
+ 
 </head>
 <body>
 
+         <%-include('../../partials/header.ejs')%>
+         
 
-        <%-include('../../partials/header.ejs')%>  
-    <a href="/createroles"><button>Create Role</button></a>
-    <a href="/assignroles"><button>Assign Role</button></a>
+         
+         
+  <div class="vision">
+    <div class="vision-one" style="align-items: center;">
+      <img class="img-responsive center-block" src="views/dashboard/assets/placeholder.jpg" style="object-fit:cover;
+      width:1550px;
+      height:500px;
+      border: solid 1px #CCC">
+      <div class="caption">
 
+        
+        <p class="text-on-img text-center">We're building a more healthy place on earth.</p>
+      </div>   
+    </div>
 
     
-<%-include('../../partials/footer.ejs')%> 
+<div style="margin-left: 25%;margin-top: 50px;"> 
+    <a href="/allcomplaints"><button type="submit"  class="btn" style="background-color: #18bc9c ; color: white;">Current Complaint</button></a>
+    <a href="/oldcomplaints"><button type="submit"  class="btn" style="background-color: #18bc9c ; color: white;">Old Complaint</button></a>
+    <a href="/viewfeedback"><button type="submit"  class="btn" style="background-color: #18bc9c ; color: white;">View Feedback</button></a>
+    <a href="/createorder"><button type="submit"  class="btn" style="background-color: #18bc9c ; color: white;">Create Order</button></a>
+    <a href="/vieworder"><button type="submit"  class="btn" style="background-color: #18bc9c ; color: white;">View Order</button></a>
+</div>
 
+         <p class="explanation text-center">Since day one, our mission has been to provide quality and natural healthy food  to the world, and to build a better eco-system and society for the earth. This is important - we hope you can join our mission to make the world a more harmonious place.</p>
+        <div class="four-visions container">
+<!-- <div class="text-row container-fluid center-block">
+<p class="statement center-block text-center">When you drink with Borntea, you're building a better environment and society.</p>
+</div> -->
+
+
+
+<div class="row">
+<div class="col-xs-12 col-sm-3">
+  <div class="point"><span class="title">1.<br>Encouraging a simple and healthy life</span><br><br>
+</div>
+</div>
+<div class="col-xs-12 col-sm-3">
+<div class="point"><span class="title">2.<br>Supporting sustainability </span><br><br>
+
+</div>
+</div>
+<div class="col-xs-12 col-sm-3">
+<div class="point"><span class="title">3.<br>Delivering more values along the chain</span><br><br>
+</div>
+</div>
+  <div class="col-xs-12 col-sm-3">
+<div class="point"><span class="title">4.<br>Serving the Students</span><br><br>
+</div>
+</div>
+</div>
+</div>
+    
+
+                 
+
+   
+<!-- +staff can create roles , view complaints, view feegback ,order stuff ,view stuff  -->
+
+    
+<%-include('../../partials/footer.ejs')%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="/assets/js/freelancer.js"></script>
 </body>
 </html>

@@ -46,10 +46,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/", async (req, res) => {
-  if (req.session.loggedin) {
-    res.send("Welcome back, " + req.session.email + "!");
-  } else {
-    res.send("Please login to view this page!");
+  if (req.session.loggedin && req.session.isstaff=='NO') {
+    res.redirect('/dashboard')
+  } 
+  else if (req.session.loggedin && req.session.isstaff=='YES')
+  {
+    res.redirect('/staffdashboard')
+  }
+  else {
+    res.redirect('/signup')
+
   }
 });
 
@@ -120,11 +126,18 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/createcomplaint", async (req, res) => {
-  if (req.session.loggedin) {
+  if (req.session.loggedin && req.session.isstaff=='NO') {
     res.render(__dirname + "/public/views/complaint/createComplaint.ejs");
-  } else {
-    res.send("Please login to view");
+  } 
+  else if (req.session.loggedin && req.session.isstaff=='YES')
+  {
+    res.redirect('/allcomplaints')
   }
+  else {
+    
+    res.redirect('/signup')
+  }
+
 });
 
 app.post("/createcomplaint", async (req, res) => {
@@ -181,12 +194,16 @@ app.get("/viewcomplaint", async (req, res) => {
 
 app.get("/feedback", async (req, res) => {
 
-  if (req.session.loggedin) {
+  if (req.session.loggedin && req.session.isstaff=='NO') {
     res.render(__dirname + "/public/views/feedback/createFeedback.ejs");
-  } else {
-    res.send("Please login to view");
+  } 
+  else if (req.session.loggedin && req.session.isstaff=='YES')
+  {
+    res.redirect('/viewfeedback')
   }
-
+  else {
+    res.redirect('/signup')
+  }
 
 
 });
@@ -268,14 +285,96 @@ app.post("/stafflogin", async (req, res) => {
   }
 });
 
+
+
+
+
+
+
+
+
+app.get("/dashboard", async (req, res) => {
+
+if(req.session.isstaff=='YES')
+  res.redirect("/staffdashboard");
+  else
+  {
+
+
+
+    var d = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    
+    var n = weekday[d.getDay()];
+   
+
+    const pool=await dbFunction.connectToDb();
+   console.log(n);
+    // connection.query(`SELECT * FROM MENU where day=${n}`, (err, results) => {
+     
+  
+    
+ var [result]=await pool.query(`SELECT * FROM MENU where day="${n}"`)
+
+    console.log(result)
+
+    result = JSON.parse(JSON.stringify(result));
+          console.log(result);
+
+    res.render(__dirname + "/public/views/dashboard/dashboard.ejs", {result});
+
+  // var r =JSON.stringify(results)
+  //     console.log(r);
+  //     // items.push({
+  //     //   itemname: req.body.itemname,
+  //     //   quantity: req.body.quantity,
+  //     //   price: req.body.price,
+  //     // });
+  //     res.render(__dirname + "/public/views/dashboard/dashboard.ejs" );
+
+
+
+  //   })
+
+
+    
+
+  }
+});
+
+
+
+
+
 app.get("/staffdashboard", async (req, res) => {
 
   res.render(__dirname + "/public/views/dashboard/staffdashboard.ejs");
 });
 
+
+
+
+
 app.get("/createroles", async (req, res) => {
   res.render(__dirname + "/public/views/roles/roles.ejs");
 });
+
+
+
+
+
+
+
+
+
+
 
 app.post("/createroles", async (req, res) => {
   var roles = {
@@ -293,18 +392,6 @@ app.post("/createroles", async (req, res) => {
 });
 
 app.get("/assignroles", async (req, res) => {
-<<<<<<< HEAD
-  let staff, roles;
-  connection.query("SELECT * FROM messmanagementsystem.staff", (err,rows)=> {
-    staff=JSON.parse(JSON.stringify(rows))
-      connection.query("Select * from messmanagementsystem.roles",(err,rows)=>{
-        roles=JSON.parse(JSON.stringify(rows))
-        res.render(__dirname + "/public/views/roles/assignroles.ejs", {
-          staff,
-          roles
-        });
-      })
-=======
   var staff, roles;
   connection.query("SELECT * FROM STAFF", (err, results) => {
     if (!err) {
@@ -330,7 +417,6 @@ app.get("/assignroles", async (req, res) => {
   res.render(__dirname + "/public/views/roles/assignroles.ejs", {
     staff,
     roles,
->>>>>>> 501d066220a32cebe8ae653034c7f9f63341b4a3
   });
 });
   
@@ -524,6 +610,22 @@ app.get("/oldcomplaints", async (req, res) =>{
  
     })
 
+
+})
+
+
+
+app.get("/logout", async (req, res) =>{
+
+
+  // req.session.loggedin = true;
+  // req.session.email = email;
+  // req.session.user_id = results[0].id;
+  // req.session.isstaff='YES';
+  
+          // req.redirect('/signup')
+          req.session.destroy();
+            res.redirect('/signup')
 
 })
 
