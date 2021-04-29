@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+		<link rel="stylesheet" href="/assets/css/Contact-Form-Clean.css">
+		<link rel="stylesheet" href="/assets/css/Lista-Productos-Canito.css">
+</head>
+<body>
+    <%-include('../../partials/header.ejs')%>  
+
+    <div style="margin-left: 10%;margin-right: 10%;margin-top: 50px;"> 
+ <h3>Update Menu</h3>
+ <br>
+    <form action="/updatemenu" method="POST">
+        Day: <input type="text" name="Day"><br><br>
+        Session: <input type="text" name="Session"><br><br>
+        Content 1: <input type="text" name="Content1"><br><br>
+        Content 2: <input type="text" name="Content2"><br><br>
+        Content 3: <input type="text" name="Content3"><br><br>
+        Content 4: <input type="text" name="Content4"><br><br>
+        Content 5: <input type="text" name="Content5"><br><br>
+        
+        <input  class="btn" style=" margin-left: 0%; background-color: #18bc9c ; color: white;" type="submit"> 
+    </form>
+</div>
+
+    
+<%-include('../../partials/footer.ejs')%> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/freelancer.js"></script>
+</body>
+</html>

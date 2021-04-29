@@ -16,21 +16,66 @@
 </head>
 <body>
   <%-include('../../partials/header.ejs')%>  
+ <div>
+  <div style="margin-left: 10%;margin-right: 10%;margin-top: 50px;"> 
+    <h3>YOUR Complaints</h3>
+    <br>
+  <div class="col-md-12"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 
+    <thead>
+      <tr>
+          <th>Sl No.</th>
+          <th>Title </th>
+          <th>Description</th>
+          <th>Complaint date</th>
+          <th>imageurl</th>
+          
+      </tr>
+  </thead>
+  <tbody>
+    <% for(var j=0;j<results.length;j++) { %>
+      <tr >
+          <td>
+              <%=j+1 %> 
+          </td>
+  
+          <td>
+              <%=results[j]['title']%> 
+          </td>
+  
+          <td>
+              <%=results[j]['description'] %> 
+          
+          </td>
+  
+  
+          <td>
+            <%=results[j]['complaintdate'] %> 
+        
+        </td>
+          <td>
+                
+          <% if (results[j]['image']==null) { %>
+              
+            N.A
+             
+              <% } else { %>
+              <a href="
+              <%=results[j]['image'] %> 
+              ">view image</a>
+              </td>
+          <% } %> 
+              
+      </tr>
+      <% } %>
+          
+  </tbody>
+  </div>
+</div>
+</div>
 
+<br>
 
-    <%results.forEach(ele =>{%>
-    <p>Complaint Title: <%=ele.title%></p>
-    <p>Complaint Description: <%=ele.description%></p>
-    <p>Compaint Date: <%=ele.complaintdate%></p>
-    <%if(ele.imageurl!=null){%> 
-    <img src="<%=ele.imageurl%>">
-    <%}%>
-    <br><br>
-<%})%>
-
-
-<%-include('../../partials/footer.ejs')%> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>

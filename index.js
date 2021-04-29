@@ -614,6 +614,21 @@ app.get("/oldcomplaints", async (req, res) =>{
 })
 
 
+app.get('/updatemenu',async(req,res)=>{
+  res.render(__dirname+'/public/views/menu/menu.ejs');
+})
+
+app.post('/updatemenu',async(req,res)=>{
+  connection.query("update messmanagementsystem.menu set Content1=?, Content2=?, Content3=?, Content4=?, Content5=? where Day=? and Session=?;",
+  [req.body.Content1,req.body.Content2,req.body.Content3,req.body.Content4,req.body.Content5,req.body.Day,req.body.Session],
+  function (err,result){
+    if(!err){
+      console.log('query executed');
+      res.redirect('/dashboard');
+    }
+  });
+})
+
 
 app.get("/logout", async (req, res) =>{
 
